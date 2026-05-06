@@ -1,4 +1,5 @@
 /* Nama File    : Aplikasi.java
+ * Deskripsi    : Kelas utama untuk menjalankan semua demonstrasi
  * Pembuat      : Nadia Azura Nurhaniya - 24060124120019
  * Tanggal      : 6 Mei 2026
  */
@@ -29,27 +30,27 @@ public class Main {
         kelompokKucing = new Data<>();
 
         // generik pada class
-        System.out.println("\n=== Bagian I: GENERIK PADA CLASS ===");
+        System.out.println("\n--- Bagian I: GENERIK PADA CLASS ---");
 
-        d1.setIsi(new Anggora("Odie", 7.4));
-        d2.setIsi(new KembangTelon("Moza", 5.3));
+        d1.setIsi(new Anggora("Odie", 7.3));
+        d2.setIsi(new KembangTelon("Moza", 6.7));
         d3.setIsi(new Anjing("Molly"));
 
         System.out.println(d1.getIsi().toString());
         System.out.println(d2.getIsi().toString());
         System.out.println(d3.getIsi().getNama());
 
-        // generik pada operator
-        System.out.println("\n=== Bagian II: GENERIK PADA OPERATOR ===");
+        // Generik pada Operator
+        System.out.println("\n--- Bagian II: GENERIK PADA OPERATOR ---");
 
-        // menukar integer
-        a.setIsi(7);
-        b.setIsi(10);
+        // Menukar Integer
+        a.setIsi(5);
+        b.setIsi(0);
         System.out.println("Integer - Sebelum Tukar: a=" + a.getIsi() + ", b=" + b.getIsi());
         OperatorGenerik.Tukar(a, b);
         System.out.println("Integer - Sesudah Tukar: a=" + a.getIsi() + ", b=" + b.getIsi());
 
-        // menukar string
+        // Menukan String
         s1.setIsi("Jura");
         s2.setIsi("Nadia");
 
@@ -57,12 +58,12 @@ public class Main {
         OperatorGenerik.Tukar(s1, s2);
         System.out.println("String - Sesudah Tukar: a=" + s1.getIsi() + ", b=" + s2.getIsi());
 
-        // menukar sesama kucing
+        // Menukar sesama Kucing
         System.out.println("Kucing - Sebelum Tukar: a=" + d1.getIsi().getNama() + ", b=" + d2.getIsi().getNama());
         OperatorGenerik.Tukar(d1, d2);
         System.out.println("Kucing - Sesudah Tukar: a=" + d1.getIsi().getNama() + ", b=" + d2.getIsi().getNama());
 
-        // menukar sesama Anabul
+        // Menukar sesama Anabul
         x.setIsi(d3.getIsi());
         y.setIsi(d1.getIsi());
 
@@ -70,15 +71,15 @@ public class Main {
         OperatorGenerik.Tukar(x, y);
         System.out.println("Anabul - Sesudah Tukar: a=" + x.getIsi().getNama() + ", b=" + y.getIsi().getNama());
 
-        // bobot dari 2 jenis kucing
+        // Bobot dari 2 jenis Kucing
         double totalBobot = OperatorGenerik.Bobot2(
                 d1.getIsi(),
                 d2.getIsi());
         System.out.println(
                 "Total bobot " + d1.getIsi().getNama() + " dan " + d2.getIsi().getNama() + ": " + totalBobot + " kg");
 
-        // generik pada data
-        System.out.println("\n==== Bagian III: GENERIK PADA DATA ===");
+        // Generik pada Data
+        System.out.println("\n--- Bagian III: GENERIK PADA DATA ---");
 
         kelompokAnabul.setIsi(1, d1.getIsi());
         kelompokAnabul.setIsi(2, d2.getIsi());
@@ -96,7 +97,7 @@ public class Main {
         System.out.println("Isi Data (Kucing) di posisi 2: " + kelompokKucing.getIsi(2));
         System.out.println("Total isi Data: " + kelompokKucing.getSize());
 
-        // hitung total bobot Data<Kucing>
+        // Hitung total bobot Data<Kucing>
         double totalBobotKucing = OperatorGenerik.Bobot2(
                 kelompokKucing.getIsi(1),
                 kelompokKucing.getIsi(2));
@@ -104,15 +105,13 @@ public class Main {
     }
 }
 
-/*
-KESIMPULAN:
-Generik itu intinya cara kita bikin kelas atau method yang fleksibel, kita tidak perlu 
-nulis kode yang sama berkali-kali cuma karna tipe datanya beda. Misalnya kelas 
-Datum<T>, si T itu kayak "titik kosong" yang belum ditentukan tipenya, baru keisi 
-pas kita bikin objeknya, mau diisi Integer, String, Anggora, atau apapun bisa. 
-
-Kalau pakai <T extends Kucing>, berarti kita batasi T-nya harus Kucing atau 
-turunannya, jadi kita bisa akses method khusus Kucing seperti getBobot() di dalam 
-method generik itu. Intinya generik bikin kode lebih reusable tanpa mengorbankan 
-keamanan tipe data.
+/* KESIMPULAN:
+    Generic merupakan konsep yang memungkinkan kita membuat class atau method yang 
+lebih fleksibel tanpa harus membuat kode berulang hanya karena tipe datanya berbeda. 
+Contohnya pada class Datum<T>, huruf T berfungsi sebagai placeholder untuk tipe data 
+yang nantinya ditentukan saat objek dibuat, sehingga bisa digunakan untuk Integer, 
+String, Anggota, dan tipe lainnya. Jika menggunakan <T extends Kucing>, maka tipe T 
+dibatasi hanya untuk class Kucing atau turunannya. Dengan begitu, method generik dapat 
+langsung memakai method khusus milik Kucing, seperti getBobot(). Jadi, generic membantu 
+membuat kode lebih reusable, rapi, dan tetap aman terhadap tipe data.
 */
